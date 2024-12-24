@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "yarn": "^1.22.22"
+  },
+  "name": "project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "HarrisonBoyleThomas <harrison.boyle-thomas@solirius.com>",
+  "license": "MIT",
+  "packageManager": "yarn@4.5.3",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2",
+    "playwright": "^1.49.1",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {}
+}
