@@ -9,11 +9,11 @@
   "license": "MIT",
   "packageManager": "yarn@4.5.3",
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@playwright/test": "^1.49.1",
     "@types/node": "^22.10.2",
     "playwright": "^1.49.1",
     "typescript": "^5.7.2"
   },
-  "scripts": {},
-  "test": "playwright test --headed"
+  "test": "playwright test"
 }
