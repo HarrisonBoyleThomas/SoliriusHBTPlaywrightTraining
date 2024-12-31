@@ -2,9 +2,9 @@ import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import workOutHolidayPage_content from "../content/workOutHolidayPage_content";
 
+
 class WorkOutHolidayPage {
     private readonly url: string;
-    private readonly text: string;
     private readonly optionOne: string;
     private readonly optionTwo: string;
     private readonly optionThree: string;
@@ -32,6 +32,7 @@ class WorkOutHolidayPage {
             ]
         );
     }
+
     async continueOn(page: Page, radioButton: string): Promise<void> {
         let optionMap: Map<string, string> = new Map(
             [
