@@ -74,7 +74,7 @@ test(
         const employmentEndDate = "12-12-1998";
         const startingAndLeavingEndPage: StartingAndLeavingEndPage = new StartingAndLeavingEndPage();
         await startingAndLeavingEndPage.checkPageLoads(page);
-        await startingAndLeavingEndPage.continueOn(page,employmentEndDate);
+        await startingAndLeavingEndPage.continueOn(page, employmentEndDate);
 
         const hoursAmountPage: HoursAmountPage = new HoursAmountPage();
         await hoursAmountPage.checkPageLoads(page);
