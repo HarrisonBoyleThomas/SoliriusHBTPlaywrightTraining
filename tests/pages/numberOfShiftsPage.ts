@@ -5,19 +5,13 @@ import axeTest from "../accessibilityTestHelper"
 
 
 class NumberOfShiftsPage {
-    private readonly url: string;
     private readonly textInput: string;
 
-    constructor(leaveDate: string, employmentStartDate: string, employmentEndDate: string, shiftLength: number) {
-        this.url = `https://www.gov.uk/calculate-your-holiday-entitlement/y/irregular-hours-and-part-year/${leaveDate}` +
-                   `/shift-worker/starting-and-leaving/${employmentStartDate}/${employmentEndDate}/${shiftLength.toFixed(1)}`;
+    constructor() {
         this.textInput = `label[for="response"]`;
     }
 
     async checkPageLoads(page: Page): Promise<void> {
-        // Navigate to the landing page
-        await page.goto(this.url);
-
         // Check elements of the page
         await Promise.all(
             [

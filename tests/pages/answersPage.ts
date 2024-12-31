@@ -4,22 +4,17 @@ import answersPage_content from "../content/answersPage_content";
 import axeTest from "../accessibilityTestHelper"
 
 class AnswersPage {
-    protected url: string;
     private readonly title: string;
     private readonly text: string;
     private readonly expectedAnswer: string;
 
-    constructor(date: string, expectedAnswerIn: string) {
-        this.url = `https://www.gov.uk/calculate-your-holiday-entitlement/y/irregular-hours-and-part-year/${ date }/annualised-hours/full-year`;
+    constructor(expectedAnswerIn: string) {
         this.title = `.govuk-heading-xl`;
         this.text = `.govuk-govspeak`;
         this.expectedAnswer = expectedAnswerIn;
     }
 
     async checkPageLoads(page: Page): Promise<void> {
-        // Navigate to the landing page
-        await page.goto(this.url);
-
         // Check elements of the page
         await Promise.all(
             [

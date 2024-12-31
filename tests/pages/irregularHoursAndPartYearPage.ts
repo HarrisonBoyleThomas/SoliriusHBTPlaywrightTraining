@@ -4,7 +4,6 @@ import irregularHoursAndPartYearPage_content from "../content/irregularHoursAndP
 import axeTest from "../accessibilityTestHelper"
 
 class IrregularHoursAndPartYearPage {
-    private readonly url: string;
     private readonly title: string;
     private readonly text: string;
     private readonly day: string;
@@ -12,7 +11,6 @@ class IrregularHoursAndPartYearPage {
     private readonly year: string;
 
     constructor() {
-        this.url = `https://www.gov.uk/calculate-your-holiday-entitlement/y/irregular-hours-and-part-year`;
         this.title = `.govuk-fieldset__heading`;
         this.text = `.govuk-hint`;
         this.day = `label[for="response-0"]`;
@@ -21,9 +19,6 @@ class IrregularHoursAndPartYearPage {
     }
 
     async checkPageLoads(page: Page): Promise<void> {
-        // Navigate to the landing page
-        await page.goto(this.url);
-
         // Check elements of the page
         await Promise.all(
             [

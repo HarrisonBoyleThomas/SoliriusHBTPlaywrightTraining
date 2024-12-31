@@ -5,14 +5,12 @@ import axeTest from "../accessibilityTestHelper"
 
 
 class WorkOutHolidayPage {
-    private readonly url: string;
     private readonly optionOne: string;
     private readonly optionTwo: string;
     private readonly optionThree: string;
     private readonly optionFour: string;
 
     constructor() {
-        this.url = 'https://www.gov.uk/calculate-your-holiday-entitlement/y/regular/days-worked-per-week';
         this.optionOne = `label[for="response-0"]`;
         this.optionTwo = `label[for="response-1"]`;
         this.optionThree = `label[for="response-2"]`;
@@ -20,9 +18,6 @@ class WorkOutHolidayPage {
     }
 
     async checkPageLoads(page: Page): Promise<void> {
-        // Navigate to the landing page
-        await page.goto(this.url);
-
         // Check elements of the page
         await Promise.all(
             [

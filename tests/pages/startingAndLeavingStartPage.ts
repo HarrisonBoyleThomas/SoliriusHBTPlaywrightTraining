@@ -4,14 +4,12 @@ import startingAndLeavingStartPage_content from "../content/startingAndLeavingSt
 import axeTest from "../accessibilityTestHelper"
 
 class StartingAndLeavingStartPage {
-    private readonly url: string;
     private readonly title: string;
     private readonly day: string;
     private readonly month: string;
     private readonly year: string;
 
-    constructor(date: string) {
-        this.url = `https://www.gov.uk/calculate-your-holiday-entitlement/y/irregular-hours-and-part-year/${date}/shift-worker/starting-and-leaving`;
+    constructor() {
         this.title = `.govuk-fieldset__heading`;
         this.day = `label[for="response-0"]`;
         this.month = `label[for="response-1"]`;
@@ -19,9 +17,6 @@ class StartingAndLeavingStartPage {
     }
 
     async checkPageLoads(page: Page): Promise<void> {
-        // Navigate to the landing page
-        await page.goto(this.url);
-
         // Check elements of the page
         await Promise.all(
             [

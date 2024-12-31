@@ -4,7 +4,6 @@ import entitlementPage_content from "../content/entitlementPage_content";
 import axeTest from "../accessibilityTestHelper"
 
 class EntitlementPage {
-    private readonly url: string;
     private readonly text: string;
     private readonly optionOne: string;
     private readonly optionTwo: string;
@@ -13,7 +12,6 @@ class EntitlementPage {
     private readonly optionFive: string;
 
     constructor() {
-        this.url = 'https://www.gov.uk/calculate-your-holiday-entitlement/y/regular';
         this.text = `.govuk-hint`;
         this.optionOne = `label[for="response-0"]`;
         this.optionTwo = `label[for="response-1"]`;
@@ -23,9 +21,6 @@ class EntitlementPage {
     }
 
     async checkPageLoads(page: Page): Promise<void> {
-        // Navigate to the landing page
-        await page.goto(this.url);
-
         // Check elements of the page
         await Promise.all(
             [

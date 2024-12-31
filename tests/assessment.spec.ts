@@ -2,6 +2,7 @@ import { test } from '@playwright/test';
 import LandingPage from "./pages/landingPage";
 import IrregularPage from "./pages/irregularPage";
 import IrregularHoursAndPartYearPage from "./pages/irregularHoursAndPartYearPage";
+import IrregularAnnualHoursShiftsPage from "./pages/irregularAnnualHoursShiftsPage";
 import IrregularHoursAndPartYearBasedOnPage from "./pages/irregularHoursAndPartYearPageBasedOn";
 import IrregularAnnualHoursPage from "./pages/irregularAnnualHoursPage";
 import StartingAndLeavingStartPage from "./pages/startingAndLeavingStartPage";
@@ -10,7 +11,6 @@ import HoursAmountPage from "./pages/hoursAmountPage";
 import NumberOfShiftsPage from "./pages/numberOfShiftsPage";
 import ShiftPatternLengthPage from './pages/shiftPatternLengthPage';
 import AnswersPage from "./pages/answersPage";
-import IrregularHoursAnswersPage from "./pages/irregularHoursAnswersPage";
 
 
 test(
@@ -31,16 +31,16 @@ test(
         await irregularHoursAndPartYearPage.checkPageLoads(page);
         await irregularHoursAndPartYearPage.continueOn(page, yearSplit[0], yearSplit[1], yearSplit[2]);
 
-        const irregularHoursAndPartYearBasedOnPage: IrregularHoursAndPartYearBasedOnPage = new IrregularHoursAndPartYearBasedOnPage(year);
+        const irregularHoursAndPartYearBasedOnPage: IrregularHoursAndPartYearBasedOnPage = new IrregularHoursAndPartYearBasedOnPage();
         await irregularHoursAndPartYearBasedOnPage.checkPageLoads(page);
         await irregularHoursAndPartYearBasedOnPage.continueOn(page, "annualised hours");
 
-        const irregularAnnualHoursPage: IrregularAnnualHoursPage = new IrregularAnnualHoursPage(year);
+        const irregularAnnualHoursPage: IrregularAnnualHoursPage = new IrregularAnnualHoursPage();
         await irregularAnnualHoursPage.checkPageLoads(page);
         await irregularAnnualHoursPage.continueOn(page, "for a full leave year");
 
         const expectedHoliday: string = "The statutory holiday entitlement is 5.6 weeks holiday."
-        const answersPage: AnswersPage = new AnswersPage(year, expectedHoliday);
+        const answersPage: AnswersPage = new AnswersPage(expectedHoliday);
         await answersPage.checkPageLoads(page);    
     }
 );
@@ -64,17 +64,17 @@ test(
         await irregularHoursAndPartYearPage.checkPageLoads(page);
         await irregularHoursAndPartYearPage.continueOn(page, leaveStartYearSplit[0], leaveStartYearSplit[1], leaveStartYearSplit[2]);
 
-        const irregularHoursAndPartYearBasedOnPage: IrregularHoursAndPartYearBasedOnPage = new IrregularHoursAndPartYearBasedOnPage(leaveStartYear);
+        const irregularHoursAndPartYearBasedOnPage: IrregularHoursAndPartYearBasedOnPage = new IrregularHoursAndPartYearBasedOnPage();
         await irregularHoursAndPartYearBasedOnPage.checkPageLoads(page);
         await irregularHoursAndPartYearBasedOnPage.continueOn(page, "shifts");
 
-        const irregularAnnualHoursPage: IrregularAnnualHoursPage = new IrregularAnnualHoursPage(leaveStartYear);
+        const irregularAnnualHoursPage: IrregularAnnualHoursShiftsPage = new IrregularAnnualHoursShiftsPage();
         await irregularAnnualHoursPage.checkPageLoads(page);
         await irregularAnnualHoursPage.continueOn(page, "for someone starting and leaving part way through a leave year");
 
         const employmentStartDate = "01-02-1998";
         const employmentStartDateSplit = employmentStartDate.split("-");
-        const startingAndLeavingPage: StartingAndLeavingStartPage = new StartingAndLeavingStartPage(leaveStartYear);
+        const startingAndLeavingPage: StartingAndLeavingStartPage = new StartingAndLeavingStartPage();
         await startingAndLeavingPage.checkPageLoads(page);
         await startingAndLeavingPage.continueOn(
             page,
@@ -85,7 +85,7 @@ test(
 
         const employmentEndDate = "12-12-1998";
         const employmentEndDateSplit = employmentEndDate.split("-");
-        const startingAndLeavingEndPage: StartingAndLeavingEndPage = new StartingAndLeavingEndPage(leaveStartYear, employmentStartDate);
+        const startingAndLeavingEndPage: StartingAndLeavingEndPage = new StartingAndLeavingEndPage();
         await startingAndLeavingEndPage.checkPageLoads(page);
         await startingAndLeavingEndPage.continueOn(
             page,
@@ -95,36 +95,22 @@ test(
         );
 
         const shiftHours = 8;
-        const hoursAmountPage: HoursAmountPage = new HoursAmountPage(leaveStartYear, employmentStartDate, employmentEndDate);
+        const hoursAmountPage: HoursAmountPage = new HoursAmountPage();
         await hoursAmountPage.checkPageLoads(page);
         await hoursAmountPage.continueOn(page, shiftHours.toString());
 
         const numberOfShifts = 10;
-        const numberOfShiftsPage: NumberOfShiftsPage = new NumberOfShiftsPage(leaveStartYear, employmentStartDate, employmentEndDate, shiftHours);
+        const numberOfShiftsPage: NumberOfShiftsPage = new NumberOfShiftsPage();
         await numberOfShiftsPage.checkPageLoads(page);
         await numberOfShiftsPage.continueOn(page, numberOfShifts.toString());
 
         const shiftPatternLength = 11;
-        const shiftPatternLengthPage: ShiftPatternLengthPage = new ShiftPatternLengthPage(
-            leaveStartYear,
-            employmentStartDate,
-            employmentEndDate,
-            shiftHours,
-            numberOfShifts
-        );
+        const shiftPatternLengthPage: ShiftPatternLengthPage = new ShiftPatternLengthPage();
         await shiftPatternLengthPage.checkPageLoads(page);
         await shiftPatternLengthPage.continueOn(page, shiftPatternLength.toString());
 
         const expectedHoliday: string = "The statutory holiday entitlement is 24.17 shifts for the year. Each shift being 8.0 hours."
-        const answersPage: IrregularHoursAnswersPage = new IrregularHoursAnswersPage(
-            leaveStartYear,
-            expectedHoliday,
-            employmentStartDate,
-            employmentEndDate,
-            shiftHours,
-            numberOfShifts,
-            shiftPatternLength
-        );
+        const answersPage: AnswersPage = new AnswersPage(expectedHoliday);
         await answersPage.checkPageLoads(page);    
     }
 );
