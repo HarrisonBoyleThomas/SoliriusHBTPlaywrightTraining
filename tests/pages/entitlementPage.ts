@@ -3,6 +3,7 @@ import {expect} from "@playwright/test";
 import entitlementPage_content from "../content/entitlementPage_content";
 import axeTest from "../accessibilityTestHelper"
 
+
 class EntitlementPage {
     private readonly text: string;
     private readonly optionOne: string;
@@ -35,6 +36,7 @@ class EntitlementPage {
         // Check accessibility compliance
         await axeTest(page);
     }
+
     async continueOn(page: Page, radioButton: string): Promise<void> {
         let optionMap: Map<string, string> = new Map(
             [
@@ -49,7 +51,6 @@ class EntitlementPage {
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
-
 
 
 export default EntitlementPage;

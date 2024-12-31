@@ -24,12 +24,9 @@ test(
         await irregularPage.checkPageLoads(page);
         await irregularPage.continueOn(page, "Yes");
 
-        const year = "05-08-1999"
-        const yearSplit = year.split("-");
-
         const irregularHoursAndPartYearPage: IrregularHoursAndPartYearPage = new IrregularHoursAndPartYearPage();
         await irregularHoursAndPartYearPage.checkPageLoads(page);
-        await irregularHoursAndPartYearPage.continueOn(page, yearSplit[0], yearSplit[1], yearSplit[2]);
+        await irregularHoursAndPartYearPage.continueOn(page, "05-08-1999");
 
         const irregularHoursAndPartYearBasedOnPage: IrregularHoursAndPartYearBasedOnPage = new IrregularHoursAndPartYearBasedOnPage();
         await irregularHoursAndPartYearBasedOnPage.checkPageLoads(page);
@@ -57,12 +54,9 @@ test(
         await irregularPage.checkPageLoads(page);
         await irregularPage.continueOn(page, "Yes");
 
-        const leaveStartYear = "05-08-1999"
-        const leaveStartYearSplit = leaveStartYear.split("-");
-
         const irregularHoursAndPartYearPage: IrregularHoursAndPartYearPage = new IrregularHoursAndPartYearPage();
         await irregularHoursAndPartYearPage.checkPageLoads(page);
-        await irregularHoursAndPartYearPage.continueOn(page, leaveStartYearSplit[0], leaveStartYearSplit[1], leaveStartYearSplit[2]);
+        await irregularHoursAndPartYearPage.continueOn(page, "05-08-1999");
 
         const irregularHoursAndPartYearBasedOnPage: IrregularHoursAndPartYearBasedOnPage = new IrregularHoursAndPartYearBasedOnPage();
         await irregularHoursAndPartYearBasedOnPage.checkPageLoads(page);
@@ -73,41 +67,26 @@ test(
         await irregularAnnualHoursPage.continueOn(page, "for someone starting and leaving part way through a leave year");
 
         const employmentStartDate = "01-02-1998";
-        const employmentStartDateSplit = employmentStartDate.split("-");
         const startingAndLeavingPage: StartingAndLeavingStartPage = new StartingAndLeavingStartPage();
         await startingAndLeavingPage.checkPageLoads(page);
-        await startingAndLeavingPage.continueOn(
-            page,
-            employmentStartDateSplit[0],
-            employmentStartDateSplit[1],
-            employmentStartDateSplit[2]
-        );
+        await startingAndLeavingPage.continueOn(page, employmentStartDate);
 
         const employmentEndDate = "12-12-1998";
-        const employmentEndDateSplit = employmentEndDate.split("-");
         const startingAndLeavingEndPage: StartingAndLeavingEndPage = new StartingAndLeavingEndPage();
         await startingAndLeavingEndPage.checkPageLoads(page);
-        await startingAndLeavingEndPage.continueOn(
-            page,
-            employmentEndDateSplit[0],
-            employmentEndDateSplit[1],
-            employmentEndDateSplit[2]
-        );
+        await startingAndLeavingEndPage.continueOn(page,employmentEndDate);
 
-        const shiftHours = 8;
         const hoursAmountPage: HoursAmountPage = new HoursAmountPage();
         await hoursAmountPage.checkPageLoads(page);
-        await hoursAmountPage.continueOn(page, shiftHours.toString());
+        await hoursAmountPage.continueOn(page, "8");
 
-        const numberOfShifts = 10;
         const numberOfShiftsPage: NumberOfShiftsPage = new NumberOfShiftsPage();
         await numberOfShiftsPage.checkPageLoads(page);
-        await numberOfShiftsPage.continueOn(page, numberOfShifts.toString());
+        await numberOfShiftsPage.continueOn(page, "10");
 
-        const shiftPatternLength = 11;
         const shiftPatternLengthPage: ShiftPatternLengthPage = new ShiftPatternLengthPage();
         await shiftPatternLengthPage.checkPageLoads(page);
-        await shiftPatternLengthPage.continueOn(page, shiftPatternLength.toString());
+        await shiftPatternLengthPage.continueOn(page, "11");
 
         const expectedHoliday: string = "The statutory holiday entitlement is 24.17 shifts for the year. Each shift being 8.0 hours."
         const answersPage: AnswersPage = new AnswersPage(expectedHoliday);

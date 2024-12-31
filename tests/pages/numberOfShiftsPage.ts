@@ -21,12 +21,12 @@ class NumberOfShiftsPage {
         // Check accessibility compliance
         await axeTest(page);
     }
+
     async continueOn(page: Page, numberOfShifts: string): Promise<void> {
         await page.locator("#response").fill(numberOfShifts);
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
-
 
 
 export default NumberOfShiftsPage;

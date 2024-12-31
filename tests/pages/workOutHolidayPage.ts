@@ -46,5 +46,4 @@ class WorkOutHolidayPage {
 }
 
 
-
 export default WorkOutHolidayPage;

@@ -3,6 +3,7 @@ import {expect} from "@playwright/test";
 import irregularHoursAndPartYearBasedOnPage_content from "../content/irregularHoursAndPartYearBasedOnPage_content";
 import axeTest from "../accessibilityTestHelper"
 
+
 class IrregularHoursAndPartYearBasedOnPage {
     private readonly title: string;
     private readonly text: string;
@@ -38,7 +39,7 @@ class IrregularHoursAndPartYearBasedOnPage {
         // Check accessibility compliance
         await axeTest(page);
     }
-    
+
     async continueOn(page: Page, choice: string): Promise<void> {
         let optionMap: Map<string, string> = new Map(
             [
@@ -54,5 +55,6 @@ class IrregularHoursAndPartYearBasedOnPage {
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
+
 
 export default IrregularHoursAndPartYearBasedOnPage;

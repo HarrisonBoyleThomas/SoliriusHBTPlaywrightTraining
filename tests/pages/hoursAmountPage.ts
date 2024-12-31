@@ -21,12 +21,12 @@ class HoursAmountPage {
         // Check accessibility compliance
         await axeTest(page);
     }
+
     async continueOn(page: Page, hoursIn: string): Promise<void> {
         await page.locator("#response").fill(hoursIn);
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
-
 
 
 export default HoursAmountPage;

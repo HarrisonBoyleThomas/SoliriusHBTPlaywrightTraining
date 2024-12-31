@@ -21,12 +21,12 @@ class ShiftPatternLengthPage {
         // Check accessibility compliance
         await axeTest(page);
     }
+
     async continueOn(page: Page, shiftPatternLengthIn: string): Promise<void> {
         await page.locator("#response").fill(shiftPatternLengthIn);
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
-
 
 
 export default ShiftPatternLengthPage;

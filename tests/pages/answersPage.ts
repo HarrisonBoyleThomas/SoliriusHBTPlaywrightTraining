@@ -3,6 +3,7 @@ import {expect} from "@playwright/test";
 import answersPage_content from "../content/answersPage_content";
 import axeTest from "../accessibilityTestHelper"
 
+
 class AnswersPage {
     private readonly title: string;
     private readonly text: string;
@@ -26,5 +27,6 @@ class AnswersPage {
         await axeTest(page);
     }
 }
+
 
 export default AnswersPage;

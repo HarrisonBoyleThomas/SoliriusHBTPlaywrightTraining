@@ -3,6 +3,7 @@ import { expect } from "@playwright/test";
 import landingPage_content from "../content/landingPage_content";
 import axeTest from "../accessibilityTestHelper";
 
+
 class LandingPage {
     private readonly url: string;
     private readonly text: string;
@@ -29,11 +30,11 @@ class LandingPage {
         await axeTest(page);
     }
 
-    
-async continueOn(page: Page): Promise<void> {
+    async continueOn(page: Page): Promise<void> {
         // Click the continue button
         await page.getByRole("button", { name: "Start now" }).click();
     }
 }
+
 
 export default LandingPage;

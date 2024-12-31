@@ -3,6 +3,7 @@ import {expect} from "@playwright/test";
 import irregularHoursAndPartYearPage_content from "../content/irregularHoursAndPartYearPage_content";
 import axeTest from "../accessibilityTestHelper"
 
+
 class IrregularHoursAndPartYearPage {
     private readonly title: string;
     private readonly text: string;
@@ -32,15 +33,17 @@ class IrregularHoursAndPartYearPage {
         // Check accessibility compliance
         await axeTest(page);
     }
-    
-    async continueOn(page: Page, dayIn: string = "", monthIn: string = "", yearIn: string = ""): Promise<void> {
+
+    async continueOn(page: Page, dateIn: string): Promise<void> {
+        let dateSplit = dateIn.split("-");
         // Fill date form
-        await page.locator("#response-0").fill(dayIn);
-        await page.locator("#response-1").fill(monthIn);
-        await page.locator("#response-2").fill(yearIn);
+        await page.locator("#response-0").fill(dateSplit[0]);
+        await page.locator("#response-1").fill(dateSplit[1]);
+        await page.locator("#response-2").fill(dateSplit[2]);
         // Click the continue button
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
+
 
 export default IrregularHoursAndPartYearPage;

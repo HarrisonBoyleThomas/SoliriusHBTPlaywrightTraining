@@ -3,6 +3,7 @@ import {expect} from "@playwright/test";
 import irregularPage_content from "../content/irregularPage_content";
 import axeTest from "../accessibilityTestHelper"
 
+
 class IrregularPage {
     private readonly text: string;
     private readonly radioYes: string;
@@ -26,6 +27,7 @@ class IrregularPage {
         // Check accessibility compliance
         await axeTest(page);
     }
+
     async continueOn(page: Page, radioButton: string): Promise<void> {
         let optionMap: Map<string, string> = new Map(
             [
@@ -37,7 +39,6 @@ class IrregularPage {
         await page.getByRole("button", { name: "Continue" }).click();
     }
 }
-
 
 
 export default IrregularPage;
