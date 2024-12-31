@@ -4,7 +4,7 @@ import answersPage_content from "../content/answersPage_content";
 import axeTest from "../accessibilityTestHelper"
 
 class AnswersPage {
-    private readonly url: string;
+    protected url: string;
     private readonly title: string;
     private readonly text: string;
     private readonly expectedAnswer: string;
