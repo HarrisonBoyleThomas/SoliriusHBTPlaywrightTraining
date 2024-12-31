@@ -1,0 +1,1 @@
+My attempt for the Solirius Playwright training course
