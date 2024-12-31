@@ -4,7 +4,6 @@ import landingPage_content from "../content/landingPage_content";
 
 class LandingPage {
     private readonly url: string;
-    private readonly title: string;
     private readonly text: string;
 
     constructor() {
