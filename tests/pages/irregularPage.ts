@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import irregularPage_content from "../content/irregularPage_content";
+import axeTest from "../accessibilityTestHelper"
 
 class IrregularPage {
     private readonly url: string;
@@ -27,6 +28,8 @@ class IrregularPage {
                 expect(page.locator(this.radioNo)).toContainText(irregularPage_content.radioNo)
             ]
         );
+        // Check accessibility compliance
+        await axeTest(page);
     }
     async continueOn(page: Page, radioButton: string): Promise<void> {
         let optionMap: Map<string, string> = new Map(

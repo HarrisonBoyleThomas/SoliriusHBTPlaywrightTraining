@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
 import {expect} from "@playwright/test";
 import entitlementPage_content from "../content/entitlementPage_content";
+import axeTest from "../accessibilityTestHelper"
 
 class EntitlementPage {
     private readonly url: string;
@@ -36,6 +37,8 @@ class EntitlementPage {
                 expect(page.locator(this.optionFive)).toContainText(entitlementPage_content.options[4]),
             ]
         );
+        // Check accessibility compliance
+        await axeTest(page);
     }
     async continueOn(page: Page, radioButton: string): Promise<void> {
         let optionMap: Map<string, string> = new Map(

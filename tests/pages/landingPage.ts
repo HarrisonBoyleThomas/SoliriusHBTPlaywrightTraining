@@ -1,6 +1,7 @@
 import { Page } from 'playwright';
-import {expect} from "@playwright/test";
+import { expect } from "@playwright/test";
 import landingPage_content from "../content/landingPage_content";
+import axeTest from "../accessibilityTestHelper";
 
 class LandingPage {
     private readonly url: string;
@@ -8,7 +9,6 @@ class LandingPage {
 
     constructor() {
         this.url = 'https://www.gov.uk/calculate-your-holiday-entitlement';
-        this.title = `.govuk-fieldset__heading`
         this.text = `.gem-c-govspeak`
     }
 
@@ -25,6 +25,8 @@ class LandingPage {
                 expect(page.locator(this.text)).toContainText(landingPage_content.liText2),
             ]
         );
+        // Check accessibility compliance
+        await axeTest(page);
     }
 
     
